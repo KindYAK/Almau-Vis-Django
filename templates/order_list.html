@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List Orders</title>
+</head>
+<body>
+    <h1>List orders</h1>
+
+    <b>Number of clients:</b> {{ len_clients }}
+
+    {% for order in object_list %}
+        <div style="border: 2px solid black; margin-top: 10px; width: 400px; padding: 5px;">
+            <div>
+                <b>Datetime:</b> {{ order.datetime }}
+            </div>
+            <div>
+                <b>Client:</b> {{ order.client }}
+            </div>
+            <div>
+                <b>Product:</b> {{ order.product }}
+            </div>
+            <div>
+                <b>Price:</b> {{ order.price }}
+            </div>
+        </div>
+    {% endfor %}
+</body>
+</html>
