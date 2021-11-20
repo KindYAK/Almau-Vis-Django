@@ -1,8 +1,11 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>List Orders</title>
+    <script src="{% static 'js/plotly-2.6.3.min.js' %}"></script>
 </head>
 <body>
     <h1>List orders</h1>
@@ -10,6 +13,25 @@
     <div>
         <img src="{{ filename }}">
     </div>
+
+    <div id="plot"></div>
+    <script>
+      async function render_plot() {
+        var r = await fetch("get_order_plot_data");
+        r = await r.json();
+
+        var data = [
+          {
+            x: r.category_names,
+            y: r.category_values,
+            type: 'bar'
+          }
+        ];
+
+        Plotly.newPlot('plot', data);
+      }
+      render_plot();
+    </script>
 
     <b>Number of clients:</b> {{ len_clients }}
 
