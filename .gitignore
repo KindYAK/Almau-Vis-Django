@@ -1,0 +1,7 @@
+media/
+venv/
+
+*.pyx
+*.pyc
+
+db.sqlite3

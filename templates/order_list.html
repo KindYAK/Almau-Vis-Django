@@ -7,6 +7,10 @@
 <body>
     <h1>List orders</h1>
 
+    <div>
+        <img src="{{ filename }}">
+    </div>
+
     <b>Number of clients:</b> {{ len_clients }}
 
     {% for order in object_list %}
@@ -18,7 +22,7 @@
                 <b>Client:</b> {{ order.client }}
             </div>
             <div>
-                <b>Product:</b> {{ order.product }}
+                <b>Product:</b> {{ order.product }} ({{ order.product.category }})
             </div>
             <div>
                 <b>Price:</b> {{ order.price }}

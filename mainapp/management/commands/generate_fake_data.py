@@ -40,7 +40,7 @@ class Command(BaseCommand):
             )
 
         print("!!!", "Generating products")
-        for category in Category.objects.all():
+        for category in Category.objects.exclude(parent_category=None):
             for i in range(5):
                 Product.objects.create(
                     name=f"{category.name}_{i}",
