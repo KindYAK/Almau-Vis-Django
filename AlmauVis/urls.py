@@ -19,7 +19,11 @@ from django.urls import path, include
 
 from AlmauVis.settings import MEDIA_ROOT, MEDIA_URL
 
+from mainapp.dash_apps.example import *
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include('mainapp.urls', namespace='mainapp')),
+
+    path('django_plotly_dash/', include('django_plotly_dash.urls')),
 ] + static(MEDIA_URL, document_root=MEDIA_ROOT)

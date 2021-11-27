@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_plotly_dash.apps.DjangoPlotlyDashConfig',
     'mainapp',
 ]
 
@@ -71,6 +72,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'AlmauVis.wsgi.application'
 
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
