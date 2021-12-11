@@ -24,8 +24,6 @@ df = pd.DataFrame([
 ]
 )
 
-print("!!!!!!!!!!!")
-
 fig = px.histogram(df, x='order_count')
 
 app.layout = html.Div([

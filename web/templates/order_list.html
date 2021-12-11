@@ -11,6 +11,10 @@
 <body>
     <h1>List orders</h1>
 
+    {% for order in es_result %}
+        <div>{{ order }}</div>
+    {% endfor %}
+
     {% plotly_app name="SimpleExample" %}
 
     <div>

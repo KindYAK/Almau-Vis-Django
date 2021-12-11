@@ -8,7 +8,7 @@ from django.db.models import Count, Avg
 from django.http import JsonResponse
 from django.views.generic import ListView
 
-from AlmauVis.settings import MEDIA_ROOT, MEDIA_URL
+from AlmauVis.settings import MEDIA_ROOT, MEDIA_URL, ES_CLIENT
 from mainapp.models import *
 
 
@@ -75,4 +75,8 @@ class OrderListView(ListView):
         if file_age > 120:
             plot = sns.barplot(data=df, x="name", y="order_count")
             plot.get_figure().savefig(path)
+
+        # ES
+        s = ES_CLIENT.search(index="orders", query={"match_all": {}})
+        context['es_result'] = s['hits']['hits']
         return context
