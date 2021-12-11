@@ -1,5 +1,8 @@
 version: '2.2'
 
+# ETL - Extract-Transform-Load
+# ELK-stack -> Elastc-Kibana-LogStash
+
 services:
   es01:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.15.2
@@ -17,6 +20,7 @@ services:
       - 9200:9200
     networks:
       - elastic
+    restart: always
 
   es02:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.15.2
@@ -32,6 +36,7 @@ services:
       - data02:/usr/share/elasticsearch/data
     networks:
       - elastic
+    restart: always
 
   es03:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.15.2
@@ -47,6 +52,7 @@ services:
       - data03:/usr/share/elasticsearch/data
     networks:
       - elastic
+    restart: always
 
   kib01:
     image: docker.elastic.co/kibana/kibana:7.15.2
@@ -58,6 +64,7 @@ services:
       ELASTICSEARCH_HOSTS: '["http://es01:9200","http://es02:9200","http://es03:9200"]'
     networks:
       - elastic
+    restart: always
 
 volumes:
   data01:

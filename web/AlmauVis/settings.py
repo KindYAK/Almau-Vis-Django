@@ -13,6 +13,8 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from elasticsearch.client import Elasticsearch
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -84,6 +86,11 @@ DATABASES = {
     }
 }
 
+ES_CLIENT = Elasticsearch(
+    ['localhost'],
+    scheme="http",
+    port=9200,
+)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
